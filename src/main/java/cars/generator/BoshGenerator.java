@@ -1,4 +1,4 @@
-package generator;
+package cars.generator;
 
 public class BoshGenerator implements Generator {
     @Override

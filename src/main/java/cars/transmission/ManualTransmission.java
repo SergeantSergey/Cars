@@ -1,4 +1,4 @@
-package transmission;
+package cars.transmission;
 
 public class ManualTransmission implements Transmission {
 

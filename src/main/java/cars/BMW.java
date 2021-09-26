@@ -1,9 +1,9 @@
 package cars;
 
 import beepers.Beeper;
-import engines.Engine;
-import generator.Generator;
-import transmission.Transmission;
+import cars.engines.Engine;
+import cars.generator.Generator;
+import cars.transmission.Transmission;
 
 public class BMW extends Car {
 

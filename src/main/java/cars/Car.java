@@ -1,12 +1,10 @@
 package cars;
 
 import beepers.Beeper;
-import engines.Engine;
-import generator.Generator;
-import transmission.ChangeGearException;
-import transmission.Transmission;
-
-import java.io.IOException;
+import cars.engines.Engine;
+import cars.generator.Generator;
+import cars.transmission.ChangeGearException;
+import cars.transmission.Transmission;
 
 public abstract class Car {
 

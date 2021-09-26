@@ -2,15 +2,20 @@ import beepers.Beeper;
 import beepers.FancyMusic;
 import beepers.Horn;
 import beepers.MagicSparks;
+import bus.Electrubus;
+import bus.PavlovskBus;
+import bus.people.Children;
+import bus.people.People;
+import bus.people.Student;
 import cars.*;
-import engines.Engine;
-import engines.Engine12V;
-import engines.FSDEngine;
-import generator.AtomicGenerator;
-import generator.BoshGenerator;
-import transmission.AutoTransmission;
-import transmission.ChangeGearException;
-import transmission.ManualTransmission;
+import cars.engines.Engine;
+import cars.engines.Engine12V;
+import cars.engines.FSDEngine;
+import cars.generator.AtomicGenerator;
+import cars.generator.BoshGenerator;
+import cars.transmission.AutoTransmission;
+import cars.transmission.ChangeGearException;
+import cars.transmission.ManualTransmission;
 
 import java.util.ArrayList;
 
@@ -38,6 +43,54 @@ public class Main {
         for (Car car : cars) {
             checkCar(car);
         }
+
+        System.out.println();
+        System.out.println("—————");
+
+        ArrayList<People> people = new ArrayList<>();
+        People children1 = new Children();
+        children1.setName("Вася");
+
+        People children2 = new Children();
+        children1.setName("Петя");
+
+        people.add(children1);
+        people.add(children2);
+
+        People student1 = new Student();
+        children1.setName("Никита");
+
+        People student2 = new Student();
+        children1.setName("Игорь");
+
+        people.add(student1);
+        people.add(student2);
+
+        // загружаем пассажирова когда мест много и высаживаем сначала одного потом всех
+        Electrubus electrubus = new Electrubus(10);
+        System.out.println(electrubus.checkEnergy());
+        electrubus.loadPassengers(people);
+        System.out.println(electrubus.getCountPassenger());
+        electrubus.unloadPassenger(children1);
+        System.out.println(electrubus.getCountPassenger());
+        electrubus.unloadPassenger(people);
+        System.out.println(electrubus.getCountPassenger());
+
+        System.out.println();
+
+        // загружаем пассажирова когда мест мало
+        PavlovskBus pavlovskBus = new PavlovskBus(3);
+        System.out.println(pavlovskBus.openDoor());
+        pavlovskBus.loadPassengers(people);
+        System.out.println(pavlovskBus.getCountPassenger());
+        System.out.println(pavlovskBus.closeDoor());
+        System.out.println(pavlovskBus.closeDoor());
+        System.out.println(pavlovskBus.openDoor());
+        pavlovskBus.unloadPassenger(children1);
+        System.out.println(pavlovskBus.getCountPassenger());
+        pavlovskBus.unloadPassenger(people);
+        System.out.println(pavlovskBus.getCountPassenger());
+        System.out.println(pavlovskBus.closeDoor());
     }
 
     private static void checkCar(Car car) {
